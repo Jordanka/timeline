@@ -85,18 +85,6 @@ table {
  */
 
 @font-face {
-    font-family: 'Nexa Script T';
-    src: url('../assets/fonts/fontfabric_-_nexa_rust_script_t_03-webfont.eot');
-    src: url('../assets/fonts/fontfabric_-_nexa_rust_script_t_03-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../assets/fonts/fontfabric_-_nexa_rust_script_t_03-webfont.woff2') format('woff2'),
-         url('../assets/fonts/fontfabric_-_nexa_rust_script_t_03-webfont.woff') format('woff'),
-         url('../assets/fonts/fontfabric_-_nexa_rust_script_t_03-webfont.ttf') format('truetype'),
-         url('../assets/fonts/fontfabric_-_nexa_rust_script_t_03-webfont.svg#nexa_rust_script_t03') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
     font-family: 'Nexa Script B';
     src: url('../assets/fonts/fontfabric_-_nexa_rust_script_b_03-webfont.eot');
     src: url('../assets/fonts/fontfabric_-_nexa_rust_script_b_03-webfont.eot?#iefix') format('embedded-opentype'),
@@ -121,7 +109,7 @@ table {
 }
 
 /* ---------------
- * 002 - CSS
+ * 002 - HOME & GENERAL
  */
 html, body {
 	width: 100%;
@@ -130,6 +118,14 @@ html, body {
 }
 
 header {
+	width: 100%;
+	height: 115px;
+	position: relative;
+	z-index: 99999;
+	background-color: white;
+}
+
+header div {
 	width: 50%;
 	height: 60px;
 	background: url("../assets/logo_20years.png") center center no-repeat;
@@ -137,12 +133,16 @@ header {
 	padding: 15px 0;
 	border-bottom: 1px solid #263153;
 	position: relative;
-	z-index: 9999999;
+	z-index: 99999;
 }
+
+/* ---------------
+ * 002 - Polaroids
+ */
 
 #polaroids {
 	position: absolute;
-	top:120px;
+	top:115px;
 	left: 0;
 	width: 100%;
 	-webkit-transition: -webkit-transform 0.5s ease;
@@ -155,15 +155,15 @@ header {
 	transform-origin: 0 0;
 }
 
-#polaroids .row, #polaroids .tile_photos {
+.row, .tile_photos {
 	display: flex;
   justify-content: center;
 }
 
-#polaroids .tile {
+.tile {
 	height: 0;
-	padding-bottom: 10.15%;
-	background: url("../assets/polaroids01.jpg") left top repeat;
+	padding-bottom: 8.75%;
+	background: url("../assets/polaroids01.jpg") left top no-repeat;
 	background-size: 100%;
 	cursor: pointer;
 }
@@ -213,31 +213,36 @@ header {
 	font-family: 'Nexa Script B';
 }
 
-#polaroids .tile_hover h1 span {
+.tile_hover h1 span {
 	font-size: 0.5em;
 	font-family: 'Nexa Sans Black';
 }
 
-#polaroids .tile_hover p {
-	font-size: 1.2em;
-	font-family: 'Nexa Script T';
+.tile_hover p {
+	font-size: 1.3em;
+	font-family: 'Nexa Script B';
 }
 
-#polaroids .tile_info {
+.tile_info {
 	display: none;
-	position: absolute;	
+	position: absolute;
+	z-index: 999;	
 }
 
-#polaroids img {
+.tile_photos img {
 	border: 1px solid black;
 	width: 85%;
-  margin: 7% 6% 24% 6%;
+  margin: 5% 6% 20% 6%;
 }
 
-#polaroids .zoomed {
+.zoomed {
 	position: relative;
 	z-index: 999;
 }
+
+/* ---------------
+ * 002 - Navegation
+ */
 
 .navegation {
 	position: absolute;
@@ -261,9 +266,12 @@ header {
 	float: left;
 }
 
+/* ---------------
+ * 002 - Info
+ */
+
 .info {
 	width: 100%;
-	height:	100%;
 	position: absolute;
 	left: 0;
 	bottom: 0;
@@ -271,14 +279,67 @@ header {
 	background: white;
 }
 
-#thanks {
-	width: 50%;
-	margin: 0 auto;
-	text-align: center;
-	border-top: 1px solid #263153; 
+.chrono {
+	width: 100%;
+	height: 50px;
+	display: none;
+	border-bottom: 1px solid #999;
 }
 
-#thanks p {
+.chrono li {
+	display: table-cell;
+	text-align: center;
+	width: 10%;
+	font-size: 1.7em;
+	font-family: 'Nexa Sans Black';
+	color: #999;
+	white-space: nowrap;
+	vertical-align: bottom;
+	padding-bottom: 5px;
+}
+
+.chrono li:hover, .chrono li.selected {
+	cursor: pointer;
+	color: #263153;
+	font-size: 2em;
+	vertical-align: bottom;
+	border-bottom: 2px solid #263153;
+}
+
+.info_cont {
+	position: relative;
+	margin: 30px auto;
+	width: 70%;
+}
+
+.info_cont h3 {
+	font-size: 1.7em;
+	font-family: 'Nexa Sans Black';
+	text-align: right;
+	width: 30%;
+	float: left;
+	color: #333;
+}
+
+.info_cont p {
+	font-family: 'Oxygen', sans-serif;
+	font-size: 1em;
+	text-align: left;
+	width: 60%;
+	float: left;
+	padding-left: 30px;
+	line-height: 1.2em;
+	color: #333;
+}
+
+.thanks {
+	width: 50%;
+	margin: 40px auto 0 auto;
+	text-align: center;
+	border-top: 1px solid #263153;
+}
+
+.thanks p {
 	width: 50%;
 	background-color: white;
 	margin: -10px auto;
@@ -287,7 +348,7 @@ header {
 	color: #263153;
 }
 
-#logo_w3 {
+.logo_w3 {
 	width: 40px;
 	height: 40px;
 	background: url("../assets/logo_w3.png") center center no-repeat;
@@ -304,8 +365,9 @@ footer {
 	height: 30px;
 	left: 0;
 	bottom: 0;
-	font-family: 'Calibri', sans-serif;
+	font-family: 'Oxygen', sans-serif;
 	font-size: 0.8em;
+	z-index: 999;
 }
 
 #footer01 {

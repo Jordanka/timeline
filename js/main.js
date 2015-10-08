@@ -4,45 +4,60 @@ var app = angular.module('TimelineApp', []);
 	var $polaroids = $('#polaroids'); 
 	var $nav = $('.navegation');
 	var $info = $('.info');
-
-	$('#thanks').css('margin-top', $polaroids.height() + 60);
+	var $chrono = $('.chrono');
+	var $infoCont = $('.info_cont');
+	var $thanks = $('.thanks');
+	
 	var tileH = $('.tile').css('padding-bottom');
+	var tileHV = tileH.split('px')[0]*3;
+	var infoH = $(window).height() - tileHV - 115;
+	
+	$('.info').height(infoH);
 	$('.tile_hover').each(function(){
 		$(this).height(tileH);
 	});
 	$nav.hide();
 
-
 	$('.tile').on('click', function(){
 		$currentTile = $(this);
+		var $tileHover = $(this).find('.tile_hover');
 		var $tileInfo = $(this).find('.tile_info');
+		var year = $tileHover.find('h1').text().split('[')[0];
+
+		$('.chrono li').each(function(){
+			console.log($(this).text());
+			if($(this).text() == year){
+				$(this).addClass('selected');
+			}
+		});
 
 		tileX = $currentTile.offset().left;
-		tileY = $currentTile.offset().top - 120;	
+		tileY = $currentTile.offset().top - 115;	
 
 		if(!$(this).hasClass('zoomed')){
 			$polaroids.css('-webkit-transform', 'scale(3) translate(-'+tileX+'px, -'+tileY+'px)');
+			$tileHover.css('display', 'none');
+			$(this).css('cursor', 'default');
+			$thanks.hide();
 			
 			var showInfo = function() {
-				$info.removeClass('hide');
 				$nav.show();
+				$chrono.css('display', 'table');
+				$infoCont.find('h3').text($tileInfo.find('h3').text());
+				$infoCont.find('p').text($tileInfo.find('p').text());
+				$infoCont.show();
 			};
-			setTimeout(showInfo, 500);
 
-			$(this).addClass('zoomed');
+			setTimeout(showInfo, 700);
 
-			$(this).find('.tile_hover').css('display', 'none');
-			$tileInfo.show();
-			$tileInfo.css('left', tileX+'px');
-			$tileInfo.css('top', tileH);
+			$(this).addClass('zoomed');	
 		}
 	});
 
 	$('.next').on('click', function(){
 		$nav.hide();
-		$info.addClass('hide');
 		$currentTile.removeClass('zoomed');
-		$currentTile.find('.tile_info').hide();		
+		$infoCont.hide();	
 		$polaroids.css('-webkit-transform', 'scale(1)');
 		
 		var nextTile = function(){
@@ -59,12 +74,11 @@ var app = angular.module('TimelineApp', []);
 
 	$('.back').on('click', function(){
 		$nav.hide();
-		$info.addClass('hide');
+		$currentTile.removeClass('zoomed');
+		$infoCont.show();
 		$polaroids.css('-webkit-transform', 'scale(1)');
 		
 		var prevTile = function(){
-			$currentTile.removeClass('zoomed');
-			
 			if($currentTile.is($currentTile.closest('.row').find('.tile').first())){
 				$currentTile = $currentTile.closest('.row').prev().find('.tile').last();
 			} else {
