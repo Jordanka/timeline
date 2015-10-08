@@ -6,6 +6,10 @@ var app = angular.module('TimelineApp', []);
 	var $info = $('.info');
 
 	$('#thanks').css('margin-top', $polaroids.height() + 60);
+	var tileH = $('.tile').css('padding-bottom');
+	$('.tile_hover').each(function(){
+		$(this).height(tileH);
+	});
 	$nav.hide();
 
 
@@ -14,8 +18,7 @@ var app = angular.module('TimelineApp', []);
 		var $tileInfo = $(this).find('.tile_info');
 
 		tileX = $currentTile.offset().left;
-		tileY = $currentTile.offset().top - 120;
-		var tileH = $(this).css('padding-bottom');		
+		tileY = $currentTile.offset().top - 120;	
 
 		if(!$(this).hasClass('zoomed')){
 			$polaroids.css('-webkit-transform', 'scale(3) translate(-'+tileX+'px, -'+tileY+'px)');
@@ -39,9 +42,7 @@ var app = angular.module('TimelineApp', []);
 		$nav.hide();
 		$info.addClass('hide');
 		$currentTile.removeClass('zoomed');
-
-		$currentTile.find('.tile_info').hide();
-		
+		$currentTile.find('.tile_info').hide();		
 		$polaroids.css('-webkit-transform', 'scale(1)');
 		
 		var nextTile = function(){
@@ -53,7 +54,7 @@ var app = angular.module('TimelineApp', []);
 			
 			$currentTile.click();	
 		};
-		setTimeout(nextTile, 500);		
+		setTimeout(nextTile, 700);		
 	});
 
 	$('.back').on('click', function(){

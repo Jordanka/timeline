@@ -168,21 +168,25 @@ header {
 	cursor: pointer;
 }
 
-#polaroids .tile_photos div {
+.tile_photos div {
 	width: 25%;
 	height: 25%;
 }
 
-#polaroids .tile_hover {
+.tile_hover {
   position: relative;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
- 	display: none;
+ 	visibility: hidden;
+ 	opacity: 0;
+ 	-webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 
-#polaroids .tile_hover div {
+.tile_hover div {
 	position: absolute;
 	top: -100%;
 	width: 100%;
@@ -190,19 +194,21 @@ header {
 	background-color: #000924;
 	color: white;
   background-color: #000924;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 9999; 
+}
+
+.tile:hover .tile_hover { 
+	visibility: visible;	
   -khtml-opacity: .85;
 	-moz-opacity: .85;
   opacity: .85;
-  text-align: center;
-  
-  /*flex-direction: column;
-  justify-content: center;*/
-  z-index: 99999999999;
 }
 
-#polaroids .tile:hover .tile_hover { display: block; }
-
-#polaroids .tile_hover h1 {
+.tile_hover h1 {
 	font-size: 4em;
 	font-family: 'Nexa Script B';
 }
