@@ -47,8 +47,33 @@
 
 	<div id="polaroids" ng-controller="TimelineController">
 		<div class="row">
-			<div ng-repeat='year in years' class="tile">
-				<timeline-info info="year"></timeline-info>
+			<div ng-repeat='year in years' class="tile" ng-class="{zoomed : isSelected(year)}" ng-click="zoom(year)">
+				<div class="tile_photos">		
+					<div>
+						<img ng-src="{{ year.img1 }}">
+					</div>
+					<div>
+						<img ng-src="{{ year.img2 }}">
+					</div>
+					<div>
+						<img ng-src="{{ year.img3 }}">
+					</div>
+					<div>
+						<img ng-src="{{ year.img4 }}">
+					</div>
+				</div>
+
+				<div class="tile_hover">
+					<div>
+						<h1>{{ year.year }}<span>[+]</span></h1>
+						<p>{{ year.title }}</p>
+					</div>
+				</div>
+
+				<div class="tile_info">
+					<h3>{{ year.title }}</h3>
+					<p>{{ year.description }}</p>
+				</div>
 			</div>
 		</div>
 

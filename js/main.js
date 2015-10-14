@@ -1,6 +1,7 @@
 var app = angular.module('TimelineApp', []);
 
 (function($){
+	$( document ).ready(function(){
 	var $polaroids = $('#polaroids'); 
 	var $nav = $('.navegation');
 	var $info = $('.info');
@@ -25,7 +26,6 @@ var app = angular.module('TimelineApp', []);
 		var year = $tileHover.find('h1').text().split('[')[0];
 
 		$('.chrono li').each(function(){
-			console.log($(this).text());
 			if($(this).text() == year){
 				$(this).addClass('selected');
 			}
@@ -88,5 +88,6 @@ var app = angular.module('TimelineApp', []);
 			$currentTile.click();
 		};
 		setTimeout(prevTile, 500);		
+	});
 	});
 })(jQuery);
