@@ -1,23 +1,13 @@
-var app = angular.module('TimelineApp', []);
-
 (function($){
-	$( document ).ready(function(){
 	var $polaroids = $('#polaroids'); 
 	var $nav = $('.navegation');
 	var $info = $('.info');
-	var $chrono = $('.chrono');
 	var $infoCont = $('.info_cont');
 	var $thanks = $('.thanks');
 	
 	var tileH = $('.tile').css('padding-bottom');
 	var tileHV = tileH.split('px')[0]*3;
 	var infoH = $(window).height() - tileHV - 115;
-	
-	$('.info').height(infoH);
-	$('.tile_hover').each(function(){
-		$(this).height(tileH);
-	});
-	$nav.hide();
 
 	$('.tile').on('click', function(){
 		$currentTile = $(this);
@@ -42,7 +32,6 @@ var app = angular.module('TimelineApp', []);
 			
 			var showInfo = function() {
 				$nav.show();
-				$chrono.css('display', 'table');
 				$infoCont.find('h3').text($tileInfo.find('h3').text());
 				$infoCont.find('p').text($tileInfo.find('p').text());
 				$infoCont.show();
@@ -89,5 +78,19 @@ var app = angular.module('TimelineApp', []);
 		};
 		setTimeout(prevTile, 500);		
 	});
+
+	$('.home').on('click', function(){
+		$nav.hide();
+		$currentTile.removeClass('zoomed');
+		$currentTile.find('.tile_hover').css('display', 'flex');
+		$currentTile.css('cursor', 'pointer');
+		$infoCont.show();
+		$polaroids.css('-webkit-transform', 'scale(1)');
+	});
+
+	$nav.hide();
+	$('.info').height(infoH);
+	$('.tile_hover').each(function(){
+		$(this).height(tileH);
 	});
 })(jQuery);

@@ -15,24 +15,14 @@
 		<div class="logo20"></div>
 	</header>
 
-	<div class="navegation">
-		<div class="next"></div>
-		<div class="home"></div>
-		<div class="back"></div>
+	<div class="navegation">	
+		<div class="back"><img src="assets/back.png"></div>			
+		<div class="next"><img src="assets/next.png"></div>
+		<div class="home"><img src="assets/home.png"></div>
+		
 	</div>
 
 	<div class="info">
-		<ul class="chrono">
-			<li>1995</li>
-			<li>1996</li>
-			<li>1996</li>
-			<li>1996</li>
-			<li>1996</li>
-			<li>1996</li>
-			<li>1996</li>
-			<li>1996</li>
-			<li>1996</li>
-		</ul>
 
 		<div class="info_cont hide">
 			<h3>Fundación de W3 y primeras oficinas0</h3>
@@ -46,33 +36,95 @@
 	</div>
 
 	<div id="polaroids" ng-controller="TimelineController">
+
 		<div class="row">
-			<div ng-repeat='year in years' class="tile" ng-class="{zoomed : isSelected(year)}" ng-click="zoom(year)">
+			<div class="tile">
 				<div class="tile_photos">		
-					<div>
-						<img ng-src="{{ year.img1 }}">
+					<div class="photo">
+						<img src="assets/2015/2015_01.jpg">
 					</div>
-					<div>
-						<img ng-src="{{ year.img2 }}">
+					<div class="photo">
+						<img src="assets/2015/2015_01.jpg">
 					</div>
-					<div>
-						<img ng-src="{{ year.img3 }}">
+					<div class="photo">
+						<img src="assets/2015/2015_01.jpg">
 					</div>
-					<div>
-						<img ng-src="{{ year.img4 }}">
+					<div class="photo">
+						<img src="assets/2015/2015_01.jpg">
 					</div>
 				</div>
 
 				<div class="tile_hover">
 					<div>
-						<h1>{{ year.year }}<span>[+]</span></h1>
-						<p>{{ year.title }}</p>
+						<h1>1996<span>[+]</span></h1>
+						<p>Fundación de W3 y primeras oficinas</p>
 					</div>
 				</div>
 
 				<div class="tile_info">
-					<h3>{{ year.title }}</h3>
-					<p>{{ year.description }}</p>
+					<h2>1996</h2>
+					<h3>Fundación de W3 y primeras oficinas</h3>
+					<p>Breve descripción de lo lo que pasó en ese año, o de que se tratan las fotos. No más de dos o tres lineas porque se va todo al joraca.</p>
+				</div>
+			</div>
+
+			<div class="tile">	
+				<div class="tile_photos">		
+					<div class="photo">
+						<img src="assets/2015/2015_01.jpg">
+					</div>
+					<div class="photo">
+						<img src="assets/2015/2015_01.jpg">
+					</div>
+					<div class="photo">
+						<img src="assets/2015/2015_01.jpg">
+					</div>
+					<div class="photo">
+						<img src="assets/2015/2015_01.jpg">
+					</div>
+				</div>
+
+				<div class="tile_hover">
+					<div>
+						<h1>1996<span>[+]</span></h1>
+						<p>Fundación de W3 y primeras oficinas</p>
+					</div>
+				</div>
+
+				<div class="tile_info">
+					<h2>1996</h2>
+					<h3>Fundación de W3 y primeras oficinas</h3>
+					<p>Breve descripción de lo lo que pasó en ese año, o de que se tratan las fotos. No más de dos o tres lineas porque se va todo al joraca.</p>
+				</div>
+			</div>
+
+			<div class="tile">		
+				<div class="tile_photos">		
+					<div class="photo">
+						<img src="assets/2015/2015_01.jpg">
+					</div>
+					<div class="photo">
+						<img src="assets/2015/2015_01.jpg">
+					</div>
+					<div class="photo">
+						<img src="assets/2015/2015_01.jpg">
+					</div>
+					<div class="photo">
+						<img src="assets/2015/2015_01.jpg">
+					</div>
+				</div>
+
+				<div class="tile_hover">
+					<div>
+						<h1>1996<span>[+]</span></h1>
+						<p>Fundación de W3 y primeras oficinas</p>
+					</div>
+				</div>
+
+				<div class="tile_info">
+					<h2>1996</h2>
+					<h3>Fundación de W3 y primeras oficinas</h3>
+					<p>Breve descripción de lo lo que pasó en ese año, o de que se tratan las fotos. No más de dos o tres lineas porque se va todo al joraca.</p>
 				</div>
 			</div>
 		</div>
@@ -270,13 +322,5 @@
 
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="js/vendor/jquery-1.11.0.js"></script>
-<script src="js/vendor/angular.min.js"></script>
 <script src="js/main.js"></script>
-<!-- Services -->
-<script src="js/services/years.js"></script>
-<!-- Controller -->
-<script src="js/controllers/controllers.js"></script>
-<!-- Directives -->
-<script src="js/directives/timelineInfo.js"></script>
-
 </html>
