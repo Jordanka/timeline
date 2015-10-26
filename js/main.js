@@ -1,15 +1,24 @@
+var app = angular.module('TimelineApp', []);
+
 (function($){
-	var $polaroids = $('#polaroids'); 
-	var $nav = $('.navegation');
+	$( document ).on("ng-done", function(){
+	/*var $polaroids = $('#polaroids'); 	
 	var $info = $('.info');
+	var $chrono = $('.chrono');
 	var $infoCont = $('.info_cont');
 	var $thanks = $('.thanks');
-	
+
 	var tileH = $('.tile').css('padding-bottom');
 	var tileHV = tileH.split('px')[0]*3;
 	var infoH = $(window).height() - tileHV - 115;
+	
+	$('.info').height(infoH);
+	$('.tile_hover').each(function(){
+		$(this).height(tileH);
+	});
+	$('.navegation').hide();*/
 
-	$('.tile').on('click', function(){
+	/*$('.tile').on('click', function(){
 		$currentTile = $(this);
 		var $tileHover = $(this).find('.tile_hover');
 		var $tileInfo = $(this).find('.tile_info');
@@ -32,6 +41,7 @@
 			
 			var showInfo = function() {
 				$nav.show();
+				$chrono.css('display', 'table');
 				$infoCont.find('h3').text($tileInfo.find('h3').text());
 				$infoCont.find('p').text($tileInfo.find('p').text());
 				$infoCont.show();
@@ -92,5 +102,6 @@
 	$('.info').height(infoH);
 	$('.tile_hover').each(function(){
 		$(this).height(tileH);
+	});*/
 	});
 })(jQuery);

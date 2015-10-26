@@ -105,6 +105,7 @@ table {
          url('../assets/fonts/fontfabric_-_nexa_rust_sans_black_03-webfont.svg#nexa_rust_sansblack_03') format('svg');
     font-weight: normal;
     font-style: normal;
+
 }
 
 /* ---------------
@@ -162,7 +163,7 @@ header div {
 .tile {
 	height: 0;
 	padding-bottom: 8.75%;
-	background: url("../assets/polaroids01.jpg") left top no-repeat;
+	background: url("../assets/polaroids.jpg") left top no-repeat;
 	background-size: 100%;
 	cursor: pointer;
 }
@@ -285,8 +286,6 @@ header div {
 	margin-right: 40px;
 }
 
-
-
 /* ---------------
  * 002 - Info
  */
@@ -298,6 +297,33 @@ header div {
 	bottom: 0;
 	z-index: 99;
 	background: white;
+}
+
+.chrono {
+	width: 100%;
+	height: 50px;
+	display: none;
+	border-bottom: 1px solid #999;
+}
+
+.chrono li {
+	display: table-cell;
+	text-align: center;
+	width: 10%;
+	font-size: 1.7em;
+	font-family: 'Nexa Sans Black';
+	color: #999;
+	white-space: nowrap;
+	vertical-align: bottom;
+	padding-bottom: 5px;
+}
+
+.chrono li:hover, .chrono li.selected {
+	cursor: pointer;
+	color: #263153;
+	font-size: 2em;
+	vertical-align: bottom;
+	border-bottom: 2px solid #263153;
 }
 
 .info_cont {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="TimelineApp" >
 
 <head>
   <meta charset="utf-8">
@@ -10,20 +10,18 @@
   <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body ng-app="TimelineApp">
+<body ng-controller="TimelineController">
 	<header>
 		<div class="logo20"></div>
 	</header>
 
-	<div class="navegation">	
-		<div class="back"><img src="assets/back.png"></div>			
-		<div class="next"><img src="assets/next.png"></div>
-		<div class="home"><img src="assets/home.png"></div>
-		
+	<div class="navegation">
+		<div class="back" ng-click="back()"><img src="assets/back.png"></div>			
+		<div class="next" ng-click="next()"><img src="assets/next.png"></div>
+		<div class="home" ng-click="home()"><img src="assets/home.png"></div>
 	</div>
 
 	<div class="info">
-
 		<div class="info_cont hide">
 			<h3>Fundación de W3 y primeras oficinas0</h3>
 			<p>Breve descripción de lo lo que pasó en ese año, o de que se tratan las fotos. No más de dos o tres lineas porque se va todo al joraca.</p>
@@ -35,283 +33,38 @@
 		</div>
 	</div>
 
-	<div id="polaroids" ng-controller="TimelineController">
-
-		<div class="row">
-			<div class="tile">
+	<div id="polaroids">
+		<div  ng-repeat='row in rows' class="row">
+			<div ng-repeat='event in row' class="tile" ng-click="zoom($event)">
 				<div class="tile_photos">		
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
+					<div>
+						<img ng-src="{{ event.img1 }}">
 					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
+					<div>
+						<img ng-src="{{ event.img2 }}">
 					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
+					<div>
+						<img ng-src="{{ event.img3 }}">
 					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
+					<div>
+						<img ng-src="{{ event.img4 }}">
 					</div>
 				</div>
 
 				<div class="tile_hover">
 					<div>
-						<h1>1996<span>[+]</span></h1>
-						<p>Fundación de W3 y primeras oficinas</p>
+						<h1>{{ event.year }}<span>[+]</span></h1>
+						<p>{{ event.title }}</p>
 					</div>
 				</div>
 
 				<div class="tile_info">
-					<h2>1996</h2>
-					<h3>Fundación de W3 y primeras oficinas</h3>
-					<p>Breve descripción de lo lo que pasó en ese año, o de que se tratan las fotos. No más de dos o tres lineas porque se va todo al joraca.</p>
-				</div>
-			</div>
-
-			<div class="tile">	
-				<div class="tile_photos">		
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-				</div>
-
-				<div class="tile_hover">
-					<div>
-						<h1>1996<span>[+]</span></h1>
-						<p>Fundación de W3 y primeras oficinas</p>
-					</div>
-				</div>
-
-				<div class="tile_info">
-					<h2>1996</h2>
-					<h3>Fundación de W3 y primeras oficinas</h3>
-					<p>Breve descripción de lo lo que pasó en ese año, o de que se tratan las fotos. No más de dos o tres lineas porque se va todo al joraca.</p>
-				</div>
-			</div>
-
-			<div class="tile">		
-				<div class="tile_photos">		
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-				</div>
-
-				<div class="tile_hover">
-					<div>
-						<h1>1996<span>[+]</span></h1>
-						<p>Fundación de W3 y primeras oficinas</p>
-					</div>
-				</div>
-
-				<div class="tile_info">
-					<h2>1996</h2>
-					<h3>Fundación de W3 y primeras oficinas</h3>
-					<p>Breve descripción de lo lo que pasó en ese año, o de que se tratan las fotos. No más de dos o tres lineas porque se va todo al joraca.</p>
+					<h3>{{ event.title }}</h3>
+					<p>{{ event.description }}</p>
 				</div>
 			</div>
 		</div>
-
-		<div class="row">
-			<div class="tile">
-				<div class="tile_photos">		
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-				</div>
-
-				<div class="tile_hover">
-					<div>
-						<h1>1996<span>[+]</span></h1>
-						<p>Fundación de W3 y primeras oficinas</p>
-					</div>
-				</div>
-
-				<div class="tile_info">
-					<h2>1996</h2>
-					<h3>Fundación de W3 y primeras oficinas</h3>
-					<p>Breve descripción de lo lo que pasó en ese año, o de que se tratan las fotos. No más de dos o tres lineas porque se va todo al joraca.</p>
-				</div>
-			</div>
-
-			<div class="tile">	
-				<div class="tile_photos">		
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-				</div>
-
-				<div class="tile_hover">
-					<div>
-						<h1>1996<span>[+]</span></h1>
-						<p>Fundación de W3 y primeras oficinas</p>
-					</div>
-				</div>
-
-				<div class="tile_info">
-					<h2>1996</h2>
-					<h3>Fundación de W3 y primeras oficinas</h3>
-					<p>Breve descripción de lo lo que pasó en ese año, o de que se tratan las fotos. No más de dos o tres lineas porque se va todo al joraca.</p>
-				</div>
-			</div>
-
-			<div class="tile">		
-				<div class="tile_photos">		
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-				</div>
-
-				<div class="tile_hover">
-					<div>
-						<h1>1996<span>[+]</span></h1>
-						<p>Fundación de W3 y primeras oficinas</p>
-					</div>
-				</div>
-
-				<div class="tile_info">
-					<h2>1996</h2>
-					<h3>Fundación de W3 y primeras oficinas</h3>
-					<p>Breve descripción de lo lo que pasó en ese año, o de que se tratan las fotos. No más de dos o tres lineas porque se va todo al joraca.</p>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="tile">
-				<div class="tile_photos">		
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-				</div>
-
-				<div class="tile_hover">
-					<div>
-						<h1>1996<span>[+]</span></h1>
-						<p>Fundación de W3 y primeras oficinas</p>
-					</div>
-				</div>
-
-				<div class="tile_info">
-					<h2>1996</h2>
-					<h3>Fundación de W3 y primeras oficinas</h3>
-					<p>Breve descripción de lo lo que pasó en ese año, o de que se tratan las fotos. No más de dos o tres lineas porque se va todo al joraca.</p>
-				</div>
-			</div>
-
-			<div class="tile">		
-				<div class="tile_photos">		
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-				</div>
-
-				<div class="tile_hover">
-					<div>
-						<h1>1996<span>[+]</span></h1>
-						<p>Fundación de W3 y primeras oficinas</p>
-					</div>
-				</div>
-
-				<div class="tile_info">
-					<h2>1996</h2>
-					<h3>Fundación de W3 y primeras oficinas</h3>
-					<p>Breve descripción de lo lo que pasó en ese año, o de que se tratan las fotos. No más de dos o tres lineas porque se va todo al joraca.</p>
-				</div>
-			</div>
-
-			<div class="tile">
-				<div class="tile_photos">		
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-					<div class="photo">
-						<img src="assets/2015/2015_01.jpg">
-					</div>
-				</div>
-
-				<div class="tile_hover">
-					<div>
-						<h1>1996<span>[+]</span></h1>
-						<p>Fundación de W3 y primeras oficinas</p>
-					</div>
-				</div>
-
-				<div class="tile_info">
-					<h2>1996</h2>
-					<h3>Fundación de W3 y primeras oficinas</h3>
-					<p>Breve descripción de lo lo que pasó en ese año, o de que se tratan las fotos. No más de dos o tres lineas porque se va todo al joraca.</p>
-				</div>
-			</div>
-		</div>
+		<p>{{ init() }}</p>
 	</div>
 
 	<footer>
@@ -322,5 +75,13 @@
 
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="js/vendor/jquery-1.11.0.js"></script>
+<script src="js/vendor/angular.min.js"></script>
 <script src="js/main.js"></script>
+<!-- Services -->
+<script src="js/services/photos.js"></script>
+<!-- Controller -->
+<script src="js/controllers/controllers.js"></script>
+<!-- Directives -->
+<script src="js/directives/timelineInfo.js"></script>
+
 </html>
