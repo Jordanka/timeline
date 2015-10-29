@@ -1,94 +1,85 @@
 [
   [
     {
-      "img1": "assets/2015/2015_01.jpg",
-      "img2": "assets/2015/2015_01.jpg",
-      "img3": "assets/2015/2015_01.jpg",
-      "img4": "assets/2015/2015_01.jpg",
-      "year": "1995",
-      "title": "This is the title",
+      "img1": "assets/pics/comienzos_01.png",
+      "img2": "assets/pics/comienzos_02.png",
+      "img3": "assets/pics/comienzos_03.png",
+      "img4": "assets/pics/comienzos_04.png",
+      "title": "Los comienzos",
       "description": "Yeah I'm out that Brooklyn, now I'm down in Tribeca. Want to check out that new bistro?"
     },
 
      {
-      "img1": "assets/2015/2015_01.jpg",
-      "img2": "assets/2015/2015_01.jpg",
-      "img3": "assets/2015/2015_01.jpg",
-      "img4": "assets/2015/2015_01.jpg",
-      "year": "1995",
-      "title": "This is the title",
+      "img1": "assets/pics/chacabuco_01.png",
+      "img2": "assets/pics/chacabuco_02.png",
+      "img3": "assets/pics/chacabuco_03.png",
+      "img4": "assets/pics/chacabuco_04.png",
+      "title": "Chacabuco",
       "description": "Yeah I'm out that Brooklyn, now I'm down in Tribeca. Want to check out that new bistro?"
     },
 
     {
-      "img1": "assets/2015/2015_01.jpg",
-      "img2": "assets/2015/2015_01.jpg",
-      "img3": "assets/2015/2015_01.jpg",
-      "img4": "assets/2015/2015_01.jpg",
-      "year": "1995",
-      "title": "This is the title",
+      "img1": "assets/pics/loft_01.png",
+      "img2": "assets/pics/loft_02.png",
+      "img3": "assets/pics/loft_03.png",
+      "img4": "assets/pics/loft_04.png",
+      "title": "El loft",
       "description": "Yeah I'm out that Brooklyn, now I'm down in Tribeca. Want to check out that new bistro?"
     }
   ],
   [
     {
-      "img1": "assets/2015/2015_01.jpg",
-      "img2": "assets/2015/2015_01.jpg",
-      "img3": "assets/2015/2015_01.jpg",
-      "img4": "assets/2015/2015_01.jpg",
-      "year": "1995",
-      "title": "This is the title",
+      "img1": "assets/pics/saavedra_01.png",
+      "img2": "assets/pics/saavedra_02.png",
+      "img3": "assets/pics/saavedra_03.png",
+      "img4": "assets/pics/saavedra_04.png",
+      "title": "Saavedra",
       "description": "Yeah I'm out that Brooklyn, now I'm down in Tribeca. Want to check out that new bistro?"
     },
 
      {
-      "img1": "assets/2015/2015_01.jpg",
-      "img2": "assets/2015/2015_01.jpg",
-      "img3": "assets/2015/2015_01.jpg",
-      "img4": "assets/2015/2015_01.jpg",
-      "year": "1995",
-      "title": "This is the title",
+      "img1": "assets/pics/tandil_01.png",
+      "img2": "assets/pics/tandil_02.png",
+      "img3": "assets/pics/tandil_03.png",
+      "img4": "assets/pics/tandil_04.png",
+      "title": "Tandil",
       "description": "Yeah I'm out that Brooklyn, now I'm down in Tribeca. Want to check out that new bistro?"
     },
 
     {
-      "img1": "assets/2015/2015_01.jpg",
-      "img2": "assets/2015/2015_01.jpg",
-      "img3": "assets/2015/2015_01.jpg",
-      "img4": "assets/2015/2015_01.jpg",
-      "year": "1995",
-      "title": "This is the title",
+      "img1": "assets/pics/usteam_01.png",
+      "img2": "assets/pics/usteam_02.png",
+      "img3": "assets/pics/usteam_03.png",
+      "img4": "assets/pics/usteam_04.png",
+      "title": "US Team",
       "description": "Yeah I'm out that Brooklyn, now I'm down in Tribeca. Want to check out that new bistro?"
     }
   ],
   [
     {
-      "img1": "assets/2015/2015_01.jpg",
-      "img2": "assets/2015/2015_01.jpg",
-      "img3": "assets/2015/2015_01.jpg",
-      "img4": "assets/2015/2015_01.jpg",
-      "year": "1995",
-      "title": "This is the title",
+      "img1": "assets/pics/ccalvo_01.png",
+      "img2": "assets/pics/ccalvo_02.png",
+      "img3": "assets/pics/ccalvo_03.png",
+      "img4": "assets/pics/ccalvo_04.png",
+      "title": "Carlos Calvo",
       "description": "Yeah I'm out that Brooklyn, now I'm down in Tribeca. Want to check out that new bistro?"
     },
 
      {
-      "img1": "assets/2015/2015_01.jpg",
-      "img2": "assets/2015/2015_01.jpg",
-      "img3": "assets/2015/2015_01.jpg",
-      "img4": "assets/2015/2015_01.jpg",
-      "year": "1995",
-      "title": "This is the title",
+      "img1": "assets/pics/primavera_01.png",
+      "img2": "assets/pics/primavera_02.png",
+      "img3": "assets/pics/primavera_03.png",
+      "img4": "assets/pics/primavera_04.png",
+      "title": "Primaveras",
       "description": "Yeah I'm out that Brooklyn, now I'm down in Tribeca. Want to check out that new bistro?"
     },
 
     {
-      "img1": "assets/2015/2015_01.jpg",
-      "img2": "assets/2015/2015_01.jpg",
-      "img3": "assets/2015/2015_01.jpg",
-      "img4": "assets/2015/2015_01.jpg",
-      "year": "1995",
-      "title": "This is the title",
+      "img1": "assets/pics/celebraciones_01.png",
+      "img2": "assets/pics/celebraciones_02.png",
+      "img3": "assets/pics/celebraciones_03.png",
+      "img4": "assets/pics/celebraciones_04.png",
+      "title": "Celebraciones",
       "description": "Yeah I'm out that Brooklyn, now I'm down in Tribeca. Want to check out that new bistro?"
     }
   ]

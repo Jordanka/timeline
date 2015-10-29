@@ -6,14 +6,35 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
 	var $infoCont = $('.info_cont');
 	var $thanks = $('.thanks');
 
+	var nextTile = function($current){
+		if ($current.is($current.closest('.row').find('.tile').last())){ 
+			return ($current.closest('.row').next(".row").length) 
+				? $current.closest('.row').next().find('.tile').first()
+				: null;
+		}
+		return $current.next();
+	};
+
+	var prevTile = function($current){
+		if($current.is($current.closest('.row').find('.tile').first())){
+			return ($current.closest('.row').prev(".row").length)
+				? $current.closest('.row').prev().find('.tile').last()
+				: null;
+		}				
+		return $current.prev();
+	};
+
 	$scope.init = function() {
 		var tileH = $('.tile').css('padding-bottom');
-		var tileHV = tileH.split('px')[0]*3;
-		var infoH = $(window).height() - tileHV - 115;
-		$info.height(infoH);
-		$('.tile_hover').each(function(){
-			$(this).height(tileH);
-		});
+		if (tileH) {
+			var tileHV = tileH.split('px')[0]*3;
+			var infoH = $(window).height() - tileHV - 125;
+			$info.height(infoH);
+			$('.tile_hover').each(function(){
+				$(this).height(tileH);
+			});
+		}
+	
 		if (!inited) {
 			$nav.hide();
 		}
@@ -33,9 +54,14 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
 		var year = $tileHover.find('h1').text().split('[')[0];
 
 		tileX = $currentTile.offset().left;
-		tileY = $currentTile.offset().top - 115;
+		tileY = $currentTile.offset().top - 125;
 
 		if(!$currentTile.hasClass('zoomed')){
+			var $nextTile = nextTile($currentTile);
+			var $prevTile = prevTile($currentTile);
+			if ($nextTile) $(".navegation .next").show(); else $(".navegation .next").hide()
+			if ($prevTile) $(".navegation .back").show(); else $(".navegation .back").hide()
+
 			$polaroids.css('-webkit-transform', 'scale(3) translate(-'+tileX+'px, -'+tileY+'px)');
 			$tileHover.css('display', 'none');
 			$currentTile.css('cursor', 'default');
@@ -49,6 +75,7 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
 			};
 
 			setTimeout(showInfo, 700);
+			$(".tile").removeClass('zoomed');
 			$currentTile.addClass('zoomed');	
 		}	
   };
@@ -56,37 +83,29 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
   $scope.next = function(){
   	$nav.hide();
 		$currentTile.removeClass('zoomed');
+		$currentTile.css('cursor', 'pointer');
 		$infoCont.hide();	
 		$polaroids.css('-webkit-transform', 'scale(1)');
 		
-		var nextTile = function(){
-			if($currentTile.is($currentTile.closest('.row').find('.tile').last())){ 
-				$currentTile = $currentTile.closest('.row').next().find('.tile').first();
-			} else {
-				$currentTile = $currentTile.next();
-			}		
-			
-			$currentTile.click();	
-		};
-		setTimeout(nextTile, 700);
+		setTimeout(function(){
+			$currentTile.find('.tile_hover').css('display', 'flex');
+			var $nextTile = nextTile($currentTile);
+			if ($nextTile) $nextTile.click();
+		}, 700);
   };
 
   $scope.back = function(){
   	$nav.hide();
 		$currentTile.removeClass('zoomed');
-		$infoCont.show();
+		$currentTile.css('cursor', 'pointer');
+		$infoCont.hide();
 		$polaroids.css('-webkit-transform', 'scale(1)');
 		
-		var prevTile = function(){
-			if($currentTile.is($currentTile.closest('.row').find('.tile').first())){
-				$currentTile = $currentTile.closest('.row').prev().find('.tile').last();
-			} else {
-				$currentTile = $currentTile.prev();
-			}		
-			
-			$currentTile.click();
-		};
-		setTimeout(prevTile, 500);
+		setTimeout(function(){
+			$currentTile.find('.tile_hover').css('display', 'flex');
+			var $prevTile = prevTile($currentTile);
+			if ($prevTile) $prevTile.click();
+		}, 700);
   };
 
   $scope.home = function(){

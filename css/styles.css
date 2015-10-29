@@ -119,7 +119,7 @@ html, body {
 
 header {
 	width: 100%;
-	height: 115px;
+	height: 125px;
 	position: relative;
 	z-index: 99999;
 	background-color: white;
@@ -130,7 +130,7 @@ header div {
 	height: 60px;
 	background: url("../assets/logo_20years.png") center center no-repeat;
 	margin: 0 auto;
-	padding: 15px 0;
+	padding: 20px 0;
 	border-bottom: 1px solid #263153;
 	position: relative;
 	z-index: 99999;
@@ -142,7 +142,7 @@ header div {
 
 #polaroids {
 	position: absolute;
-	top:115px;
+	top:125px;
 	left: 0;
 	width: 100%;
 	-webkit-transition: -webkit-transform 0.5s ease;
@@ -209,18 +209,18 @@ header div {
 }
 
 .tile_hover h1 {
-	font-size: 4em;
-	font-family: 'Nexa Script B';
+	font-size: 2em;
+	font-family: 'Nexa Sans Black';
+	text-transform: uppercase;
+
 }
 
 .tile_hover h1 span {
-	font-size: 0.5em;
+	position: relative;
+	top: -2px;
+	padding-left: 10px;
+	font-size: 0.7em;
 	font-family: 'Nexa Sans Black';
-}
-
-.tile_hover p {
-	font-size: 1.3em;
-	font-family: 'Nexa Script B';
 }
 
 .tile_info {
@@ -297,33 +297,6 @@ header div {
 	bottom: 0;
 	z-index: 99;
 	background: white;
-}
-
-.chrono {
-	width: 100%;
-	height: 50px;
-	display: none;
-	border-bottom: 1px solid #999;
-}
-
-.chrono li {
-	display: table-cell;
-	text-align: center;
-	width: 10%;
-	font-size: 1.7em;
-	font-family: 'Nexa Sans Black';
-	color: #999;
-	white-space: nowrap;
-	vertical-align: bottom;
-	padding-bottom: 5px;
-}
-
-.chrono li:hover, .chrono li.selected {
-	cursor: pointer;
-	color: #263153;
-	font-size: 2em;
-	vertical-align: bottom;
-	border-bottom: 2px solid #263153;
 }
 
 .info_cont {
@@ -408,7 +381,7 @@ footer {
 }
 
 #footer02 a {
-	color: #cd512e;
+	color: #263153;
 	text-decoration: none;
 }
 
