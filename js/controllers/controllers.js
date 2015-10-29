@@ -24,6 +24,64 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
 		return $current.prev();
 	};
 
+  rows.success(function(data) {
+    $scope.rows = data;
+    
+    $(document).on("img_progress", function(ev, data){
+    	$('.total').text(data.total);
+    	$('.partial').text(data.count);
+    	console.log("Imágen #" + data.count + " de " +data.total + " precargada.");  
+    })
+
+    $(document).on("img_done", function(ev, data){
+    	$('#back_loader').fadeOut('slow');  
+    })
+
+		// Preload
+  	var imgs = {};
+  	var total = 0;
+
+  	for (var r1 in data) {
+  		for (var r2 in data[r1]) {
+  			for (var r3 in data[r1][r2]) {      				
+    			if (r3.substr(0,3) == "img") {
+    				total += 1;
+    				imgs["i"+r1+"."+r2+"."+r3] = data[r1][r2][r3];
+    			}
+  			}
+  		}
+  	}      	
+  	var count = 0;
+  	for (var i in imgs) {
+  		var img = new Image();      		      		
+  		img.index = i;
+  		img.onload = function() {
+  			count += 1;
+		var data = {
+			ok: true,
+			src: imgs[this.index],
+			count: count,
+			total: total
+		};
+  			$(document).trigger("img_progress", data);
+  			if (total == count) $(document).trigger("img_done");
+  		}
+  		img.onerror = function() {
+  			count += 1;
+		var data = {
+			ok: false,
+			src: imgs[this.index],
+			count: count,
+			total: total
+		};
+		$(document).trigger("img_progress", data);
+		if (total == count) $(document).trigger("img_done");
+  		}
+  		img.src = imgs[i];
+  	}
+		// Preload
+  });
+
 	$scope.init = function() {
 		var tileH = $('.tile').css('padding-bottom');
 		if (tileH) {
@@ -31,7 +89,8 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
 			var infoH = $(window).height() - tileHV - 125;
 			$info.height(infoH);
 			$('.tile_hover').each(function(){
-				$(this).height(tileH);
+				$(this).find('div').height(tileH);
+				$(this).find('div').css('margin-top', '-'+tileH);
 			});
 		}
 	
@@ -40,10 +99,6 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
 		}
 		inited = true;
 	}
-
-  rows.success(function(data) {
-    $scope.rows = data; 
-  });
 
   $scope.zoom = function($event){
 		//$currentTile es un objeto jQuery que referencia al objeto clickeado
@@ -117,4 +172,13 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
 		$polaroids.css('-webkit-transform', 'scale(1)');
 		$thanks.show();
   };
+
+  $( window ).resize(function() {
+		if($currentTile.hasClass('zoomed')){
+			$scope.home();
+			$scope.init();
+		} else {
+			$scope.init();
+		}		
+	});
 }]);
