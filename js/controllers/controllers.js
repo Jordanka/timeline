@@ -29,8 +29,7 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
     
     $(document).on("img_progress", function(ev, data){
     	$('.total').text(data.total);
-    	$('.partial').text(data.count);
-    	console.log("Imágen #" + data.count + " de " +data.total + " precargada.");  
+    	$('.partial').text(data.count); 
     })
 
     $(document).on("img_done", function(ev, data){
@@ -40,6 +39,7 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
 		// Preload
   	var imgs = {};
   	var total = 0;
+  	var count = 0;
 
   	for (var r1 in data) {
   		for (var r2 in data[r1]) {
@@ -51,32 +51,35 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
   			}
   		}
   	}      	
-  	var count = 0;
+  	
   	for (var i in imgs) {
   		var img = new Image();      		      		
   		img.index = i;
+
   		img.onload = function() {
-  			count += 1;
-		var data = {
-			ok: true,
-			src: imgs[this.index],
-			count: count,
-			total: total
-		};
+				count += 1;
+				var data = {
+					ok: true,
+					src: imgs[this.index],
+					count: count,
+					total: total
+				};
   			$(document).trigger("img_progress", data);
   			if (total == count) $(document).trigger("img_done");
   		}
+
   		img.onerror = function() {
   			count += 1;
-		var data = {
-			ok: false,
-			src: imgs[this.index],
-			count: count,
-			total: total
-		};
-		$(document).trigger("img_progress", data);
-		if (total == count) $(document).trigger("img_done");
+				var data = {
+					ok: false,
+					src: imgs[this.index],
+					count: count,
+					total: total
+				};
+				$(document).trigger("img_progress", data);
+				if (total == count) $(document).trigger("img_done");
   		}
+
   		img.src = imgs[i];
   	}
 		// Preload
@@ -100,6 +103,21 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
 		inited = true;
 	}
 
+	$(window).resize(function() {
+		cont=0;
+		$('.tile').each(function(){
+			if($(this).hasClass('zoomed')){
+				cont=1;
+			}
+		});
+		if(cont!=0){
+			$scope.home();
+			$scope.init();
+		} else {
+			$scope.init();
+		}
+	});
+
   $scope.zoom = function($event){
 		//$currentTile es un objeto jQuery que referencia al objeto clickeado
   	$currentTile = $($event.currentTarget);
@@ -118,6 +136,9 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
 			if ($prevTile) $(".navegation .back").show(); else $(".navegation .back").hide()
 
 			$polaroids.css('-webkit-transform', 'scale(3) translate(-'+tileX+'px, -'+tileY+'px)');
+			$polaroids.css('-moz-transform', 'scale(3) translate(-'+tileX+'px, -'+tileY+'px)');
+			$polaroids.css('-o-transform', 'scale(3) translate(-'+tileX+'px, -'+tileY+'px)');
+			$polaroids.css('transform', 'scale(3) translate(-'+tileX+'px, -'+tileY+'px)');
 			$tileHover.css('display', 'none');
 			$currentTile.css('cursor', 'default');
 			$thanks.hide();
@@ -141,6 +162,9 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
 		$currentTile.css('cursor', 'pointer');
 		$infoCont.hide();	
 		$polaroids.css('-webkit-transform', 'scale(1)');
+		$polaroids.css('-moz-transform', 'scale(1)');
+		$polaroids.css('-o-transform', 'scale(1)');
+		$polaroids.css('transform', 'scale(1)');
 		
 		setTimeout(function(){
 			$currentTile.find('.tile_hover').css('display', 'flex');
@@ -155,6 +179,9 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
 		$currentTile.css('cursor', 'pointer');
 		$infoCont.hide();
 		$polaroids.css('-webkit-transform', 'scale(1)');
+		$polaroids.css('-moz-transform', 'scale(1)');
+		$polaroids.css('-o-transform', 'scale(1)');
+		$polaroids.css('transform', 'scale(1)');
 		
 		setTimeout(function(){
 			$currentTile.find('.tile_hover').css('display', 'flex');
@@ -170,15 +197,9 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
 		$currentTile.css('cursor', 'pointer');
 		$infoCont.hide();
 		$polaroids.css('-webkit-transform', 'scale(1)');
+		$polaroids.css('-moz-transform', 'scale(1)');
+		$polaroids.css('-o-transform', 'scale(1)');
+		$polaroids.css('transform', 'scale(1)');
 		$thanks.show();
   };
-
-  $( window ).resize(function() {
-		if($currentTile.hasClass('zoomed')){
-			$scope.home();
-			$scope.init();
-		} else {
-			$scope.init();
-		}		
-	});
 }]);

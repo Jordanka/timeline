@@ -6,8 +6,11 @@
  *
  * 001 - Meyer's Reset
  * 002 - Fonts
- * 003 - Box Model
- * 003 - General Styles
+ * 003 - HOME & GENERAL
+ * 004 - Polaroids
+ * 005 - Navegation
+ * 006 - Info
+ * 007 - Footer
 
  * ---------------
  * 001 - Meyer's reset
@@ -109,7 +112,7 @@ table {
 }
 
 /* ---------------
- * 002 - HOME & GENERAL
+ * 003 - HOME & GENERAL
  */
 html, body {
 	width: 100%;
@@ -137,7 +140,7 @@ header div {
 }
 
 /* ---------------
- * 002 - Polaroids
+ * 004 - Polaroids
  */
 
 #polaroids {
@@ -183,6 +186,7 @@ header div {
  	opacity: 0;
  	-webkit-transition: opacity 0.5s ease-in-out;
   -moz-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
   transition: opacity 0.5s ease-in-out;
 }
 
@@ -241,13 +245,13 @@ header div {
 }
 
 /* ---------------
- * 002 - Navegation
+ * 005 - Navegation
  */
 
 .navegation {
 	position: absolute;
 	width: 100%;
-	top: 37%;
+	top: 40%;
 	z-index: 99999999;
 }
 
@@ -259,8 +263,11 @@ header div {
 	transform: scale(0.9);
 	-webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
+  filter: alpha(opacity=80);
+  opacity: 0.8;
 }
 
 .navegation div:hover {
@@ -268,6 +275,8 @@ header div {
   -moz-transform: scale(1);
   -o-transform: scale(1);
 	transform: scale(1);
+	filter: alpha(opacity=1);
+  opacity: 1;
 }
 
 .navegation .back {
@@ -287,7 +296,7 @@ header div {
 }
 
 /* ---------------
- * 002 - Info
+ * 006 - Info
  */
 
 .info {
@@ -349,7 +358,7 @@ header div {
 }
 
  /* ---------------
- * 001 - Footer
+ * 007 - Footer
  */
 
 footer {
@@ -401,9 +410,18 @@ footer {
 
 .loader {
 	position: relative;
-	margin: 40% auto;
-	width: 50px;
-	height: 50px;
+	margin: 200px auto 0 auto;
+	width: 100px;
+	height: 100px;
+}
+
+#back_loader p {
+	font-family: 'Nexa Sans Black';
+	color: #333;
+	font-size: 1.3em;
+	margin-top: 10px;
+	width: 100px;
+	text-align: center;
 }
 
 
