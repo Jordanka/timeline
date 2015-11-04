@@ -32,8 +32,11 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
     	$('.partial').text(data.count); 
     })
 
-    $(document).on("img_done", function(ev, data){
-    	$('#back_loader').fadeOut('slow');  
+    $(document).on("img_done", function(ev, data){    	
+    	$('#back_loader').fadeOut('slow'); 
+    	setTimeout(function(){
+    		$(window).trigger("resize");
+    	},100)
     })
 
 		// Preload
@@ -86,6 +89,21 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
   });
 
 	$scope.init = function() {
+	
+		if (!inited) {
+			$nav.hide();
+		}
+		inited = true;
+		// Padding-bottom fix for firefox
+		$('.tile').each(function(){
+			var $tile = $(this);
+			var width = parseFloat($tile.css("width"));
+			console.log(width);
+			$tile.css({
+				"padding-bottom": width * 0.0875 * 3 + "px"
+			})
+		})
+		// 
 		var tileH = $('.tile').css('padding-bottom');
 		if (tileH) {
 			var tileHV = tileH.split('px')[0]*3;
@@ -96,14 +114,9 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
 				$(this).find('div').css('margin-top', '-'+tileH);
 			});
 		}
-	
-		if (!inited) {
-			$nav.hide();
-		}
-		inited = true;
 	}
 
-	$(window).resize(function() {
+	$(window).on("resize", function() {
 		cont=0;
 		$('.tile').each(function(){
 			if($(this).hasClass('zoomed')){
@@ -116,7 +129,7 @@ app.controller('TimelineController', ['$scope', 'rows', function($scope, rows) {
 		} else {
 			$scope.init();
 		}
-	});
+	})
 
   $scope.zoom = function($event){
 		//$currentTile es un objeto jQuery que referencia al objeto clickeado

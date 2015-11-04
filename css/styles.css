@@ -159,13 +159,16 @@ header div {
 }
 
 .row, .tile_photos {
-	display: flex;
+	display: -webkit-flex;
+  display: -moz-flex;
+  display: -o-flex;
+  display: flex;
   justify-content: center;
 }
 
 .tile {
 	height: 0;
-	padding-bottom: 8.75%;
+	/*padding-bottom: 8.75%;*/
 	background: url("../assets/polaroids.jpg") left top no-repeat;
 	background-size: 100%;
 	cursor: pointer;
@@ -199,7 +202,13 @@ header div {
 	color: white;
   background-color: #000924;
   text-align: center;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -o-flex;
   display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -o-flex-direction: column;
   flex-direction: column;
   justify-content: center;
   z-index: 9999; 
